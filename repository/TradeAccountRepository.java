@@ -29,4 +29,12 @@ public class TradeAccountRepository {
     public TradeAccount retrieveTradeAccount(String id) {
         return this.datastore.get(id) == null ? null : this.datastore.get(id).clone();
     }
+
+    /**
+     * Updates the stored TradeAccount in the datastore by replacing it with a clone.
+     * @param account the TradeAccount to be updated
+     */
+    public void updateTradeAccount(TradeAccount account) {
+        this.datastore.put(account.getId(), account.clone());
+    }
 }
