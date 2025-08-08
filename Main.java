@@ -121,7 +121,7 @@ public class Main {
             marginAccountService.retrieveTradeAccount("G4567H").getMargin());
     }
 
-        /**
+    /**
      * Main method to execute the full flow: load accounts, apply transactions, and print final balances.
      */
     public static void main(String[] args) {
@@ -133,5 +133,4 @@ public class Main {
             System.out.println("Error: " + exception.getMessage());
         }
     }
-
 }
