@@ -99,4 +99,25 @@ public class Main {
         // Close the reader
         reader.close();
     }
+
+    /**
+     * Retrieves and prints final balances of specified Cash and Margin accounts.
+     * @throws IOException if account lookup fails
+     */
+    public static void finalTest() throws IOException {
+        System.out.println("Account A1234B Cash Balance: " +
+            cashAccountService.retrieveTradeAccount("A1234B").getCashBalance());
+
+        System.out.println("Account E3456F Cash Balance: " +
+            cashAccountService.retrieveTradeAccount("E3456F").getCashBalance());
+
+        System.out.println("Account I5678J Cash Balance: " +
+            cashAccountService.retrieveTradeAccount("I5678J").getCashBalance());
+
+        System.out.println("Account C2345D Margin: " +
+            marginAccountService.retrieveTradeAccount("C2345D").getMargin());
+
+        System.out.println("Account G4567H Margin: " +
+            marginAccountService.retrieveTradeAccount("G4567H").getMargin());
+    }
 }
