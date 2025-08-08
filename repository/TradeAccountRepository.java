@@ -13,5 +13,11 @@ public class TradeAccountRepository {
     // In-memory store for trade accounts, keyed by account ID
     private Map<String, TradeAccount> datastore = new HashMap<>();
 
-    // More methods will be added in the next tasks
+    /**
+     * Stores a clone of the provided TradeAccount in the datastore.
+     * @param account the TradeAccount to be stored
+     */
+    public void createTradeAccount(TradeAccount account) {
+        this.datastore.put(account.getId(), account.clone());
+    }
 }
