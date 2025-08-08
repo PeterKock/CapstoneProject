@@ -37,4 +37,12 @@ public class TradeAccountRepository {
     public void updateTradeAccount(TradeAccount account) {
         this.datastore.put(account.getId(), account.clone());
     }
+
+    /**
+     * Deletes the TradeAccount with the specified ID from the datastore.
+     * @param id the account ID to delete
+     */
+    public void deleteTradeAccount(String id) {
+        this.datastore.remove(id);
+    }
 }
