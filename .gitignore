@@ -3,3 +3,6 @@ MarginAccount.class
 TradeAccount.class
 Main.class
 TradeAccountRepository.class
+CashAccountService.class
+MarginAccountService.class
+TradeAccountService.class
