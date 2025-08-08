@@ -20,4 +20,13 @@ public class TradeAccountRepository {
     public void createTradeAccount(TradeAccount account) {
         this.datastore.put(account.getId(), account.clone());
     }
+
+    /**
+     * Retrieves a cloned TradeAccount from the datastore by its ID.
+     * @param id the account ID
+     * @return cloned TradeAccount if found, otherwise null
+     */
+    public TradeAccount retrieveTradeAccount(String id) {
+        return this.datastore.get(id) == null ? null : this.datastore.get(id).clone();
+    }
 }
