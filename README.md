@@ -13,11 +13,20 @@ All accounts are initialized from a file. Transactions (deposits and withdrawals
 
 ## Folder Structure
 
-├── data/ # Contains accounts.txt and transactions.txt
-├── pojo/ # Data model classes (TradeAccount, CashAccount, MarginAccount)
-├── repository/ # In-memory data store with CRUD operations
-├── service/ # Business logic for account operations
-└── Main.java # Program entry point
+data/
+Contains accounts.txt and transactions.txt
+
+pojo/
+Data model classes: TradeAccount, CashAccount, MarginAccount
+
+repository/
+In-memory data store with CRUD operations
+
+service/
+Business logic for account operations
+
+Main.java
+Program entry point
 
 ## Concepts Demonstrated
 
