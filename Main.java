@@ -1,37 +1,37 @@
 import pojo.CashAccount;
 import pojo.MarginAccount;
+import pojo.TradeAccount;
+import repository.TradeAccountRepository;
+
 import java.math.BigDecimal;
 
 /**
- * Main class for testing the cloning functionality of TradeAccount subclasses.
+ * Main class for testing repository CRUD operations on TradeAccount objects.
  */
 public class Main {
     public static void main(String[] args) {
 
-        // Create a CashAccount instance
-        CashAccount cashAccount = new CashAccount("C123", new BigDecimal("1000.00"));
-        System.out.println("Cash Account Details:");
-        System.out.println("ID: " + cashAccount.getId());
-        System.out.println("Cash Balance: " + cashAccount.getCashBalance());
+        // Create repository instance
+        TradeAccountRepository repository = new TradeAccountRepository();
 
-        // Clone the CashAccount
-        CashAccount clonedCashAccount = (CashAccount) cashAccount.clone();
-        System.out.println("Cloned Cash Account Details:");
-        System.out.println("ID: " + clonedCashAccount.getId());
-        System.out.println("Cash Balance: " + clonedCashAccount.getCashBalance());
+        // Create and store a CashAccount
+        CashAccount cashAccount = new CashAccount("C123", new BigDecimal("1000.00"));
+        repository.createTradeAccount(cashAccount);
+
+        // Create and store a MarginAccount
+        MarginAccount marginAccount = new MarginAccount("M456", new BigDecimal("5000.00"));
+        repository.createTradeAccount(marginAccount);
+
+        // Retrieve and display CashAccount
+        TradeAccount retrievedCashAccount = repository.retrieveTradeAccount("C123");
+        System.out.println("Retrieved Cash Account ID: " + retrievedCashAccount.getId());
+        System.out.println("Cash Balance: " + ((CashAccount) retrievedCashAccount).getCashBalance());
 
         System.out.println();
 
-        // Create a MarginAccount instance
-        MarginAccount marginAccount = new MarginAccount("M456", new BigDecimal("5000.00"));
-        System.out.println("Margin Account Details:");
-        System.out.println("ID: " + marginAccount.getId());
-        System.out.println("Margin: " + marginAccount.getMargin());
-
-        // Clone the MarginAccount
-        MarginAccount clonedMarginAccount = (MarginAccount) marginAccount.clone();
-        System.out.println("Cloned Margin Account Details:");
-        System.out.println("ID: " + clonedMarginAccount.getId());
-        System.out.println("Margin: " + clonedMarginAccount.getMargin());
+        // Retrieve and display MarginAccount
+        TradeAccount retrievedMarginAccount = repository.retrieveTradeAccount("M456");
+        System.out.println("Retrieved Margin Account ID: " + retrievedMarginAccount.getId());
+        System.out.println("Margin: " + ((MarginAccount) retrievedMarginAccount).getMargin());
     }
 }
