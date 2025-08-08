@@ -59,4 +59,44 @@ public class Main {
         // Close the reader
         reader.close();
     }
+
+    /**
+     * Reads the transactions.txt file and applies each transaction to the correct account.
+     * @throws IOException if the file read fails
+     */
+    public static void applyTransactions() throws IOException {
+        // Open a buffered reader to read the transactions.txt file
+        BufferedReader reader = Files.newBufferedReader(paths[1]);
+
+        String line;
+        // Read the file line-by-line
+        while ((line = reader.readLine()) != null) {
+            // Split each line into parts: [accountType, accountId, action, amount]
+            String[] parts = line.split(" ");
+            String type = parts[0];
+            String id = parts[1];
+            String action = parts[2];
+            BigDecimal amount = new BigDecimal(parts[3]);
+
+            // Process CASH accounts
+            if (type.equals("CASH")) {
+                if (action.equals("DEPOSIT")) {
+                    cashAccountService.deposit(id, amount);
+                } else if (action.equals("WITHDRAWAL")) {
+                    cashAccountService.withdraw(id, amount);
+                }
+
+            // Process MARGIN accounts
+            } else if (type.equals("MARGIN")) {
+                if (action.equals("DEPOSIT")) {
+                    marginAccountService.deposit(id, amount);
+                } else if (action.equals("WITHDRAWAL")) {
+                    marginAccountService.withdraw(id, amount);
+                }
+            }
+        }
+
+        // Close the reader
+        reader.close();
+    }
 }
