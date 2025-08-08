@@ -1,7 +1,6 @@
 package service;
 
 import pojo.CashAccount;
-import pojo.TradeAccount;
 import repository.TradeAccountRepository;
 
 import java.math.BigDecimal;
